@@ -7,3 +7,15 @@
 ; A List-of-numbers is one of: 
 ; – empty
 ; – (cons Number List-of-numbers)
+; interp. a List-of-numbers is a list of numbers
+
+; List-of-numbers -> Boolean
+; Determine whether the numbers in a List-of-numbers are positive or not
+
+(define (pos? List-of-numbers)
+  (cond
+    [(empty? List-of-numbers) ...]
+    [else
+     (.. (... (first List-of-numbers) ...)
+          ...
+          ... (pos? (rest List-of-numbers)) ...)]))
