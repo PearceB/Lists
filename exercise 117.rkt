@@ -19,3 +19,6 @@
     [(empty? List-of-amounts) 0]
     [else (+ (first List-of-amounts)
           (sum (rest List-of-amounts)))]))
+
+; Note that this function implies the use of only positive numbers
+; The problem of negative numbers will be addressed in the next exercise
