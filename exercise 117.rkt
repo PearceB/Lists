@@ -10,10 +10,12 @@
 
 ; List-of-amounts -> Number
 ; Take a List-of-amounts and compute the sum giving a number
+(check-expect (sum (list 1 1 1)) 3)
+(check-expect (sum empty) 0)
+(check-expect (sum (list 5 10 10.123)) 25.123)
 
 (define (sum List-of-amounts)
   (cond
-    [(empty? List-of-amounts) ...]
-    [else
-      (...(first List-of-amounts) ...
-          ...(sum List-of-amounts))]))
+    [(empty? List-of-amounts) 0]
+    [else (+ (first List-of-amounts)
+          (sum (rest List-of-amounts)))]))
