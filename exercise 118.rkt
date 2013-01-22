@@ -14,8 +14,8 @@
 
 (define (pos? List-of-numbers)
   (cond
-    [(empty? List-of-numbers) ...]
+    [(empty? List-of-numbers) false]
     [else
-     (.. (... (first List-of-numbers) ...)
-          ...
-          ... (pos? (rest List-of-numbers)) ...)]))
+     (if (> (first List-of-numbers) 0)
+          true
+          (pos? (rest List-of-numbers)))]))
