@@ -11,6 +11,10 @@
 
 ; List-of-numbers -> Boolean
 ; Determine whether the numbers in a List-of-numbers are positive or not
+(check-expect (pos? empty) false)
+(check-expect (pos? (list 1)) true)
+(check-expect (pos? (list 1 1)) true)
+(check-expect (pos? (list -1)) false)
 
 (define (pos? List-of-numbers)
   (cond
