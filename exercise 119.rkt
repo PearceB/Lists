@@ -7,3 +7,12 @@
 ; - empty
 ; - (cons Boolean List-of-Boolean)
 ; interp. a List-of-Boolean is a list of Boolean values
+
+; List-of-Boolean -> Boolean
+; Determine whether all the Boolean values in a List-of-Boolean are true or not
+
+(define (all-true List-of-Boolean)
+  (cond
+    [... (emmpty? List-of-Boolean) ...]
+    [else ... (first List-of-Boolean) ...
+          ... (rest List-of-Boolean) ...]))
