@@ -10,9 +10,12 @@
 
 ; List-of-Strings -> String
 ; Take the strings in a List-of-Strings and append them together
+(check-expect (juxtapose empty) "")
+(check-expect (juxtapose (list "Bob")) "Bob")
+(check-expect (juxtapose (list "Bob" "Tarznit")) "BobTarznit")
 
 (define (juxtapose List-of-Strings)
   (cond
-    [... (empty? List-of-Strings) ...]
-    [... (first List-of-Strings) ...
-     ... (rest List-of-Strings) ...]))
+    [(empty? List-of-Strings) ""]
+    [else (string-append (first List-of-Strings)
+                         (juxtapose (rest List-of-Strings)))]))
