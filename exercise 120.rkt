@@ -7,3 +7,12 @@
 ; - empty
 ; - (cons String List-of-Strings)
 ; interp. a List-of-Strings is a list of strings
+
+; List-of-Strings -> String
+; Take the strings in a List-of-Strings and append them together
+
+(define (juxtapose List-of-Strings)
+  (cond
+    [... (empty? List-of-Strings) ...]
+    [... (first List-of-Strings) ...
+     ... (rest List-of-Strings) ...]))
