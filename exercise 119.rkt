@@ -26,9 +26,18 @@
 
 ; List-of-Boolean -> Boolean
 ; Determine whether at least one value on the list is true
+(check-expect (one-true empty) false)
+(check-expect (one-true (list true)) true)
+(check-expect (one-true (list false)) false)
+(check-expect (one-true (list true false)) true)
+(check-expect (one-true (list false true)) true)
+(check-expect (one-true (list false false)) false)
 
 (define (one-true List-of-Boolean)
   (cond
-    [... (empty? List-of-Boolean) ...]
-    [... (first List-of-Boolean) ...
-     ... (rest List-of-Boolean) ...]))
+    [(empty? List-of-Boolean) false]
+    [(cons? List-of-Boolean)
+     (if
+      (boolean=? (first List-of-Boolean) true)
+      true
+      (one-true (rest List-of-Boolean)))]))
