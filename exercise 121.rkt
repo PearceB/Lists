@@ -7,3 +7,12 @@
 ; - empty
 ; - (cons Image List-of-Images)
 ; interp. a List-of-Images is a list of images
+
+; List-of-Images -> Boolean Image
+; Determine whether the images in a List-of-Images are ill-sized
+
+(define (ill-sized? List-of-Images)
+  (cond
+    [... (empty? List-of-Images) ...]
+    [... (first List-of-Images) ...
+     ... (rest List-of-Images) ...]))
