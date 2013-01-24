@@ -23,3 +23,12 @@
       (boolean=? (first List-of-Boolean) true)
       (all-true (rest List-of-Boolean))
       false)]))
+
+; List-of-Boolean -> Boolean
+; Determine whether at least one value on the list is true
+
+(define (one-true List-of-Boolean)
+  (cond
+    [... (empty? List-of-Boolean) ...]
+    [... (first List-of-Boolean) ...
+     ... (rest List-of-Boolean) ...]))
