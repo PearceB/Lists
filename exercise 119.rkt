@@ -10,9 +10,16 @@
 
 ; List-of-Boolean -> Boolean
 ; Determine whether all the Boolean values in a List-of-Boolean are true or not
+(check-expect (all-true empty) true)
+(check-expect (all-true (list true)) true)
+(check-expect (all-true (list false)) false)
+(check-expect (all-true (list true false)) false)
 
 (define (all-true List-of-Boolean)
   (cond
-    [... (emmpty? List-of-Boolean) ...]
-    [else ... (first List-of-Boolean) ...
-          ... (rest List-of-Boolean) ...]))
+    [(empty? List-of-Boolean) true]
+    [(cons? List-of-Boolean)
+     (if
+      (boolean=? (first List-of-Boolean) true)
+      (all-true (rest List-of-Boolean))
+      false)]))
