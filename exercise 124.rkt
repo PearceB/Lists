@@ -30,3 +30,12 @@
   (cond
     [(empty? (rest anelot)) 1]
     [(cons? (rest anelot)) (+ (how-many (rest anelot)) 1)]))
+
+; NEList-of-Temperatures -> Number
+; To find the average of the numbers in a NEList-of-Temperatures
+(check-expect (average (list 1 2 3)) 2)
+(check-expect (average (list 1)) 1)
+
+(define (average anelot)
+  (/ (sum anelot)
+     (how-many anelot)))
