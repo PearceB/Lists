@@ -23,7 +23,10 @@
 
 ; NEList-of-Temperatures -> Number
 ; To find how many numbers are in a NEList-of-Temperatures
+(check-expect (how-many (list 2)) 1)
+(check-expect (how-many (list 2 3 3)) 3)
+
 (define (how-many anelot)
   (cond
-    [(empty? (rest anelot) ...)]
-    [(cons? (rest anelot) ...)]))
+    [(empty? (rest anelot)) 1]
+    [(cons? (rest anelot)) (+ (how-many (rest anelot)) 1)]))
