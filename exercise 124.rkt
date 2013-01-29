@@ -11,7 +11,11 @@
 ; Helper Functions
 
 ; NEList-of-Temperatures -> Number
+(check-expect (sum (list 1 )) 1)
+(check-expect (sum (list 1 2)) 3)
+
 (define (sum anelot)
   (cond
-    [(empty? (rest anelot)) ...]
-    [(cons? (rest anelot)) ...]))
+    [(empty? (rest anelot)) (first anelot)]
+    [(cons? (rest anelot))
+     (+ (first anelot) (sum (rest anelot)))]))
