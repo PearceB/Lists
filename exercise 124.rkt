@@ -11,6 +11,7 @@
 ; Helper Functions
 
 ; NEList-of-Temperatures -> Number
+; To find the sum of the numbers in a NEList-of-Temperatures
 (check-expect (sum (list 1 )) 1)
 (check-expect (sum (list 1 2)) 3)
 
@@ -19,3 +20,10 @@
     [(empty? (rest anelot)) (first anelot)]
     [(cons? (rest anelot))
      (+ (first anelot) (sum (rest anelot)))]))
+
+; NEList-of-Temperatures -> Number
+; To find how many numbers are in a NEList-of-Temperatures
+(define (how-many anelot)
+  (cond
+    [(empty? (rest anelot) ...)]
+    [(cons? (rest anelot) ...)]))
