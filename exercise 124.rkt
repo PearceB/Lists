@@ -7,3 +7,11 @@
 ; - (cons CTemperature empty)
 ; - (cons CTemperature NEList-of-temperatures)
 ; interp. : nopn-empty lists of measured temperatures
+
+; Helper Functions
+
+; NEList-of-Temperatures -> Number
+(define (sum anelot)
+  (cond
+    [(empty? (rest anelot)) ...]
+    [(cons? (rest anelot)) ...]))
