@@ -16,4 +16,9 @@
 ; LoFT -> LoCT
 ; To change a LoFT to a LoCT
 
-(define (convertFC LoFT) 0)
+(define (convertFC LoFT)
+  (cond
+    [(empty? LoFT) ...]
+    [(cons? LoFT)
+     (... (first LoFT) ...
+          (rest LoFT) ...)]))
