@@ -46,3 +46,35 @@
      (cons (make-pay_check (work-employee (first Low))
                            (wage.v2 (first Low)))
            (wage*.v3 (rest Low)))]))
+
+(define-struct WorkRecord (employee employee-number rate hours))
+; Work is a structure: (make-work String Number Number). 
+; interp. (make-work n en r h) combines the name (n) and the employee number (en)
+; with the pay rate (r) and the number of hours (h) worked.
+
+(define-struct pay-check (name employee-number number))
+; Pay_check is a structure: (make-pay_check String Number).
+; interp. (make-pay_check n num) combines the name (n)
+; and the employee-number (en) with the amount of pay (num)
+
+; Work -> Number
+; compute the wage for the given work record w
+(check-expect (wage*.v2 (make-WorkRecord "Bob" 17 4 12)) 48)
+
+(define (wage*.v2 w)
+  (* (WorkRecord-rate w) (WorkRecord-hours w)))
+
+; Low -> Lop
+; Consume a list of revised work records and produce a list of revised pay checks
+(check-expect (wage*.v4 empty) empty)
+(check-expect (wage*.v4 (list (make-WorkRecord "Bob" 17 4 12)))
+              (list (make-pay-check "Bob" 17 48)))
+
+(define (wage*.v4 Low)
+  (cond
+    [(empty? Low) empty]
+    [(cons? Low)
+      (cons (make-pay-check (WorkRecord-employee (first Low))
+                            (WorkRecord-employee-number (first Low))
+                            (wage*.v2 (first Low)))
+            (wage*.v4 (rest Low)))]))
