@@ -8,10 +8,10 @@
 ; interp. (make-work n r h) combines the name (n) 
 ; with the pay rate (r) and the number of hours (h) worked.
 
-(define-struct pay_check (name amount))
+(define-struct pay_check (name number))
 ; Pay_check is a structure: (make-pay_check String Number).
-; interp. (make-pay_check n a) combines the name (n)
-; with the amount of pay (a)
+; interp. (make-pay_check n num) combines the name (n)
+; with the amount of pay (num)
 
 ; Low (list of works) is one of: 
 ; – empty
@@ -23,7 +23,26 @@
 ; - empty
 ; - (cons Pay_check Lop)
 
+; Work -> Number
+; compute the wage for the given work record w
+(check-expect (wage.v2 (make-work "Bob" 4 12)) 48)
+
+(define (wage.v2 w)
+  (* (work-rate w) (work-hours w)))
+
 ; Low -> Lop
 ; Consume a list of work records and produce a list of pay checks
+(check-expect (wage*.v3 empty) empty)
+(check-expect (wage*.v3 (list (make-work "Bob" 12 4))) (list (make-pay_check "Bob" 48)))
+(check-expect (wage*.v3 (list (make-work "Bob" 12 4)
+                              (make-work "Bobby" 5 14)))
+                        (list (make-pay_check "Bob" 48)
+                              (make-pay_check "Bobby" 70)))
 
-(define (wage*.v3 Low) 0)
+(define (wage*.v3 Low)
+  (cond
+    [(empty? Low) empty]
+    [(cons? Low)
+     (cons (make-pay_check (work-employee (first Low))
+                           (wage.v2 (first Low)))
+           (wage*.v3 (rest Low)))]))
